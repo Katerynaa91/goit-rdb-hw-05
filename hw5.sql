@@ -59,7 +59,7 @@ DETERMINISTIC
 READS SQL DATA
 BEGIN
 	DECLARE result FLOAT;
-    	SET result = dividend / divisor;
+    	SET result = dividend / NULLIF(divisor, 0); -- UPD: added NULLIF() to override ZeroDivision Error
     	RETURN result;
 END //
 
